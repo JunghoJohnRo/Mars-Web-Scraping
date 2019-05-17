@@ -19,7 +19,7 @@ def scrape_info():
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
 
-    time.sleep(5)
+    time.sleep(3)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -51,7 +51,7 @@ def scrape_info():
     weather_url = "https://twitter.com/marswxreport?lang=en"
     browser.visit(weather_url)
 
-    time.sleep(5)
+    time.sleep(3)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
@@ -65,7 +65,7 @@ def scrape_info():
 
     tables = pd.read_html(facts_url)
 
-    time.sleep(5)
+    time.sleep(3)
 
     df = tables[0]
     df.columns = ['Description','Value']
@@ -80,7 +80,7 @@ def scrape_info():
     mh_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(mh_url)
 
-    time.sleep(5)
+    time.sleep(3)
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
