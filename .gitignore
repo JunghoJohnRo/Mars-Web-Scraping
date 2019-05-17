@@ -3,6 +3,13 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# .DS_Store
+.DS_Store
+
+# Jupyter Checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
 # C extensions
 *.so
 
