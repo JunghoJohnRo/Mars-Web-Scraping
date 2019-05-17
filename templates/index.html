@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron|Play:700" rel="stylesheet">
+</head>
+
+<!--I had to hard code my style into html, for some odd reason my CSS file was being overwritten by bootstrap's style-->
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center" style="background-image: url(http://www.baltana.com/files/wallpapers-14/Mars-Background-Wallpaper-36953.jpg); color: #E77D11">
+      <h1 style="font-size:80px; font-family: 'Orbitron', sans-serif"  >Mission to Mars</h1>
+      <p><a class="btn btn-dark btn-lg" href="/scrape" role="button" style="font-family: 'Orbitron', sans-serif; color:#E77D11">Scrape New Data</a></p>
+    </div>
+    <div class="row-md-12" style="font-family: 'Play', sans-serif">
+      <h3>Latest Mars news</h3>
+      <h5>{{mars.news_title}}</h5>
+      <p>{{mars.news_p}}</p>
+    </div>
+    <br>
+    <div class="row justify-content-between" style="font-family: 'Play', sans-serif">
+      <div class="col-md-8">
+        <h3>Featured Mars Image</h3>
+        <img src="{{mars.featured_image_url}}" alt="Featured Mars Image" height=650px width=940px>
+      </div>
+      <div class="col-md-4">
+        <div class="shadow p-3 mb-5 bg-white rounded border">
+          <h4>Current Weather on Mars</h4>
+          <p>{{mars.mars_weather}}</p>
+        </div>
+        <div class="col-md-12">
+          <h4>Mars Facts</h4>
+          {{mars.marsfacts_html_table|safe}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="container-fluid" style="font-family: 'Play', sans-serif">
+    <center><h3>Mars Hemispheres</h3></center>
+    <hr style="border: 0.5p gray;"/>
+    <div class="row">
+      {% for hemisphere in mars.hemisphere_image_urls %}  
+        <div class="col-md-6 ">
+          <figure class="figure shadow p-3 mb-5 bg-white rounded border">
+            <img src="{{hemisphere.img_url}}" class="figure-img img-fluid rounded" alt="hemisphere">
+            <figcaption class="figure-caption"><h5 style="color:black">{{hemisphere.title}}</h5></figcaption>
+          </figure>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+
+</html>
